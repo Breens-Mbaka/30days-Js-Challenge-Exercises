@@ -17,7 +17,7 @@ countryData();
 
 
 //Exercise2: Print out all the cat names in to catNames variable
-const catsAPI = 'https://api.thecatapi.com/v1/breeds';
+//const catsAPI = 'https://api.thecatapi.com/v1/breeds';
 const catsData = async () => {
     var response = await fetch(catsAPI);
     var data = await response.json();
@@ -30,7 +30,7 @@ const catsData = async () => {
 catsData();
 
 //Exercise3(Question1:Read the cats api and find the average weight of cat in metric unit)
-const catsAPI = 'https://api.thecatapi.com/v1/breeds';
+//const catsAPI = 'https://api.thecatapi.com/v1/breeds';
 
 const metricWeight = async () => {
     var catsData = await fetch(catsAPI);
@@ -42,3 +42,18 @@ const metricWeight = async () => {
     });
 }
 metricWeight();
+
+//Exercise3(Questiin2:Read the countries api and find out the 10 largest countries)
+const countriesAPI = 'https://restcountries.eu/rest/v2/all';
+const largestCountries = async () => {
+    const response = await fetch(countriesAPI);
+    const data = await response.json();
+    let countries = [];
+    data.forEach(country => {
+        countries.push(country.name,country.area);
+    });
+    var sortedArray = countries.sort((a,b) => b - a);
+    var bigCountries = sortedArray.slice(0,10);
+    console.log(bigCountries);
+}
+largestCountries();
