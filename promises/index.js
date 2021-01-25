@@ -4,8 +4,10 @@ const countryData = async () => {
     const response =  await fetch(countriesAPI);
     const data = await response.json();
     data.forEach(element => {
-
-        console.log(element.name,element.languages,element.population,element.area);
+        var languages = element.languages;
+        languages.forEach(language => {
+            console.log(element.name,language.name,element.population,element.area);
+        })
     });
 }
 countryData();
