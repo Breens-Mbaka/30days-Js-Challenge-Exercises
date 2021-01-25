@@ -2,7 +2,7 @@
  * Exercise1: Read the countries API using fetch and print the name of country, 
  * capital, languages, population and area.
  */
-const countriesAPI = 'https://restcountries.eu/rest/v2/all'
+/*const countriesAPI = 'https://restcountries.eu/rest/v2/all'
 const countryData = async () => {
     const response =  await fetch(countriesAPI);
     const data = await response.json();
@@ -14,10 +14,11 @@ const countryData = async () => {
     });
 }
 countryData();
+**/
 
 
 //Exercise2: Print out all the cat names in to catNames variable
-const catsAPI = 'https://api.thecatapi.com/v1/breeds';
+/*const catsAPI = 'https://api.thecatapi.com/v1/breeds';
 const catsData = async () => {
     var response = await fetch(catsAPI);
     var data = await response.json();
@@ -28,3 +29,18 @@ const catsData = async () => {
     });
 }
 catsData();
+**/
+
+//Exercise3(Question1)
+const catsAPI = 'https://api.thecatapi.com/v1/breeds';
+
+const metricWeight = async () => {
+    var catsData = await fetch(catsAPI);
+    var response = await catsData.json();
+    response.forEach(data => {
+        var weightDetails = data.weight.metric.split("-");
+        var averageWeight = parseInt(weightDetails[0] + weightDetails[1] / 2);
+        console.log(averageWeight);
+    });
+}
+metricWeight();
