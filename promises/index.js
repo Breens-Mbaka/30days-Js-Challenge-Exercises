@@ -6,7 +6,7 @@ const countryData = async () => {
     data.forEach(element => {
         var languages = element.languages;
         languages.forEach(language => {
-            console.log(element.name,language.name,element.population,element.area);
+            console.log(`Country: ${element.name}, Language: ${language.name}, Population: ${element.population}, Area:${element.area}`);
         })
     });
 }
