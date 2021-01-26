@@ -2,7 +2,7 @@
  * Exercise1: Read the countries API using fetch and print the name of country, 
  * capital, languages, population and area.
  */
-//const countriesAPI = 'https://restcountries.eu/rest/v2/all'
+const countriesAPI = 'https://restcountries.eu/rest/v2/all'
 const countryData = async () => {
     const response =  await fetch(countriesAPI);
     const data = await response.json();
@@ -13,11 +13,11 @@ const countryData = async () => {
         })
     });
 }
-//countryData();
+countryData();
 
 
 //Exercise2: Print out all the cat names in to catNames variable
-//const catsAPI = 'https://api.thecatapi.com/v1/breeds';
+const catsAPI = 'https://api.thecatapi.com/v1/breeds';
 const catsData = async () => {
     var response = await fetch(catsAPI);
     var data = await response.json();
@@ -27,11 +27,11 @@ const catsData = async () => {
         console.log(catNames);
     });
 }
-//catsData();
+catsData();
+
 
 //Exercise3(Question1:Read the cats api and find the average weight of cat in metric unit)
-//const catsAPI = 'https://api.thecatapi.com/v1/breeds';
-
+const catsAPI = 'https://api.thecatapi.com/v1/breeds';
 const metricWeight = async () => {
     var catsData = await fetch(catsAPI);
     var response = await catsData.json();
@@ -41,7 +41,7 @@ const metricWeight = async () => {
         console.log(averageWeight);
     });
 }
-//metricWeight();
+metricWeight();
 
 //Exercise3(Question2:Read the countries api and find out the 10 largest countries)
 const countriesAPI = 'https://restcountries.eu/rest/v2/all';
@@ -55,3 +55,20 @@ const largestCountries = async () => {
     })
 }
 largestCountries();
+
+//Exercise3(Question3:Read the countries api and count total number of languages in the world used as officials)
+const countriesAPI = 'https://restcountries.eu/rest/v2/all';
+const totalLanguages = async () => {
+    const response = await fetch(countriesAPI);
+    const data = await response.json();
+    console.log(data)
+    var numberOflanguages = [];
+    data.forEach(language => {
+        var number = language.languages.length;
+        console.log(number);
+        numberOflanguages.push(number);
+    })
+    var totalNumberOfLanguages = numberOflanguages.reduce((a,b) => a+b);
+    console.log(totalNumberOfLanguages);
+}
+totalLanguages();
